@@ -1,0 +1,30 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-01-30 10:15:08
+ * @LastEditTime: 2021-01-30 21:13:35
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \2020\practice\practise.html
+-->
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>todo_list</title>
+    <link rel="stylesheet" type="text/css" href="static/css/todo_list.css"/>
+    <script type="text/javascript" src="static/js/vue.js"></script>
+    <link rel="shortcut icon" href="#"/>
+</head>
+<body>
+    <div id="Add">
+        <input id="_add" v-model="message" placeholder="请输入待办事件（不超过100字）" maxlength="100">
+        <button v-on:click="add(message)" class="edit_button">添加{{message.length}}/100</button>
+        <button v-on:click="del_all()" class="edit_button" id="del_all">全部删除</button>
+    </div>
+    <div id="todo_list">
+        <item v-for="(item,index) in items" v-bind:todo="item" v-bind:key="index" v-on:del_single="items.splice(index, 1)" v-on:edit="_edit(index)" v-on:edit_done="_edit_done(index)">
+            {{index+1}}、
+        </item>
+    </div>
+
+    <script type="text/javascript" src="static/js/todo_list.js"></script>
+</body>
